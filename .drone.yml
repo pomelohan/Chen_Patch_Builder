@@ -24,8 +24,6 @@ steps:
       - bash packages_setup.sh
       - bash gradle_setup.sh
       - bash clone_hook_framework.sh
-      - bash generate_idstrings.sh OnePlus7Pro
+      - bash generate_idstrings.sh idlist/RedmiSeriesID.txt
       - bash build_dex.sh
-      - bash IDInjector.sh
-      - bash build_patch_zip.sh
       - bash upload_zip.sh
