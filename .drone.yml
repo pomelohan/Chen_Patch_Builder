@@ -1,0 +1,31 @@
+kind: pipeline
+type: docker
+name: Chen Patch Builder
+
+platform:
+  os: linux
+  arch: amd64
+
+clone:
+  depth: 1
+
+steps:
+  - name: Chen Patch Builder
+    environment:
+      GITID:
+        from_secret: GITID
+      GITPWD:
+        from_secret: GITPWD
+    image: ubuntu:latest
+    commands:
+      - cd /drone/src
+      - apt update && apt install -y git
+      - git remote add heart https://$GITID:$GITPWD@github.com/rsyhan/Chen_Patch_Builder_Core && git fetch heart && git checkout FETCH_HEAD
+      - bash packages_setup.sh
+      - bash gradle_setup.sh
+      - bash clone_hook_framework.sh
+      - bash generate_idstrings.sh OnePlus7Pro
+      - bash build_dex.sh
+      - bash IDInjector.sh
+      - bash build_patch_zip.sh
+      - bash upload_zip.sh
