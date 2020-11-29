@@ -20,7 +20,7 @@ steps:
     commands:
       - cd /drone/src
       - apt update && apt install -y git
-      - git remote add heart https://$GITID:$GITPWD@github.com/rsyhan/Chen_Patch_Builder_Core && git fetch heart && git checkout FETCH_HEAD
+      - git remote add heart https://$GITID:$GITPWD@github.com/pomelohan/Chen_Patch_Builder_Core && git fetch heart && git checkout FETCH_HEAD
       - bash packages_setup.sh
       - bash gradle_setup.sh
       - bash clone_hook_framework.sh
