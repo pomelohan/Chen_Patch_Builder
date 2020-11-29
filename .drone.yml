@@ -24,6 +24,6 @@ steps:
       - bash packages_setup.sh
       - bash gradle_setup.sh
       - bash clone_hook_framework.sh
-      - bash generate_idstrings.sh idlist/RedmiSeriesID.txt
+      - bash generate_idstrings.sh idlist/RedmiSeriesID
       - bash build_dex.sh
       - bash upload_zip.sh
